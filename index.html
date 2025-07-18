@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Marker‑Based AR GIF</title>
+    <!-- A‑Frame core -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- AR.js for A‑Frame -->
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.3.2/aframe/build/aframe-ar.js"></script>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
+  </head>
+  <body>
+    <!-- Hidden video element: loads your MP4 and is used as a texture -->
+    <video 
+      id="gifVideo" 
+      src="animation_720p_compatible.mp4" 
+      loop 
+      muted 
+      playsinline 
+      webkit-playsinline 
+      crossorigin="anonymous" 
+      style="display: none">
+    </video>
+
+    <!-- A‑Frame scene with AR.js enabled -->
+    <a-scene 
+      embedded 
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+      
+      <!-- Use your custom marker (.patt) here -->
+      <a-marker 
+        type="pattern" 
+        url="marker.patt">
+
+        <!-- A 1 m × 0.5625 m plane (16:9 ratio → 9/16 = 0.5625) lying flat (rotate -90°) -->
+        <a-video 
+          src="#gifVideo" 
+          width="1" 
+          height="0.5625" 
+          rotation="-90 0 0" 
+          position="0 0 0"
+          autoplay="true" 
+          loop="true" 
+          muted>
+        </a-video>
+      </a-marker>
+
+      <!-- Always include a camera entity -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
