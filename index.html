@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AR GIF Overlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script src="https://unpkg.com/aframe@1.2.0/dist/aframe.min.js"></script>
+  <script src="https://unpkg.com/mind-ar@1.1.7/dist/mindar-image.prod.js"></script>
+  <script src="https://unpkg.com/mind-ar@1.1.7/dist/aframe/mindar-image-aframe.prod.js"></script>
+  <style>
+    body, html { margin: 0; overflow: hidden; }
+    #ar-container { width: 100vw; height: 100vh; }
+  </style>
+</head>
+<body>
+  <div id="ar-container">
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets.mind; autoStart: true; uiLoading: yes; uiError: yes;"
+      embedded
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: true"
+    >
+      <a-assets>
+        <img id="gif" src="animation.gif" />
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-image src="#gif" position="0 0 0" width="1" height="0.75"></a-image>
+      </a-entity>
+    </a-scene>
+  </div>
+</body>
+</html>
+
