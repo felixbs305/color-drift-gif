@@ -29,19 +29,14 @@
         detectionMode: mono;
         matrixCodeType: 3x3;"
 >
-  <a-marker type="pattern" url="marker.patt" patternRatio="0.85">
-    <!-- temporary test object instead of your video -->
-    <a-box
-      color="red"
-      depth="0.1"
-      height="0.1"
-      width="0.1"
-      rotation="-90 0 0"
-      position="0 0.05 0"
-    ></a-box>
-  </a-marker>
-  <a-entity camera></a-entity>
-</a-scene>
+<a-marker type="pattern" url="marker.patt" patternRatio="0.85">
+  <a-box
+    color="red"
+    depth="0.1" height="0.1" width="0.1"
+    rotation="-90 0 0"
+    position="0 0.05 0">
+  </a-box>
+</a-marker>
 
     <script>
       document.getElementById('start').addEventListener('click', async () => {
